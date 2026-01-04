@@ -1,0 +1,10 @@
+# Virtual machine images
+*.qcow2
+*.iso
+
+# Cloud-init secrets (if you make local copies)
+user-data.secret.yml
+
+# Temporary editor or system files
+*.swp
+*.DS_Store
