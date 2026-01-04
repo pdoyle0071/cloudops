@@ -1,0 +1,33 @@
+#cloud-config
+autoinstall:
+  version: 1
+  identity:
+    hostname: lab-linux-02
+    username: #your username
+    password: #yourpwd (hashed)
+  ssh:
+    install-server: true
+    authorized-keys:
+      - ssh-rsa #your ssh key
+  locale: en_GB.UTF-8
+  keyboard:
+    layout: gb
+  storage:
+    layout:
+      name: lvm
+  packages:
+    - htop
+    - curl
+    - vim
+    - qemu-guest-agent
+  network:
+    version: 2
+    ethernets:
+      eth0:
+        match:
+          macaddress:   # must match the VM NIC
+        dhcp4: true
+  timezone: Europe/London
+  late-commands:
+    - curtin in-target --target=/target -- apt-get update
+    - curtin in-target --target=/target -- apt-get upgrade -y

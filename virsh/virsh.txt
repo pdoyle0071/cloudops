@@ -1,0 +1,12 @@
+virt-install \
+  --name lab-linux-02 \
+  --memory 4096 \
+  --vcpus 2 \
+  --disk path=/var/lib/libvirt/images/lab-linux-02.qcow2,size=10,format=qcow2 \
+  --disk path=lab-linux-02-cloudinit.iso,device=cdrom \
+  --network bridge=br0,mac=52:54:00:02:02:02 \
+  --graphics vnc,listen=0.0.0.0 \
+  --console pty,target_type=serial \
+  --cdrom /var/lib/libvirt/boot/ubuntu-22.04.5-live-server-amd64.iso \
+  --os-variant ubuntu22.04 \
+  --noautoconsole
